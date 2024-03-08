@@ -1,0 +1,82 @@
+@use "variables" as *;
+
+.primary-footer {
+  .primary-footer-wrapper {
+    grid-column: 2 / 3;
+
+    @media (min-width: #{$desktop-width}) {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+    }
+  }
+
+  .primary-footer-inner .menu,
+  .info p:nth-of-type(2) {
+    @media (min-width: #{$tablet-width}) {
+      padding-inline: 2rem;
+    }
+  }
+
+  .primary-footer-inner {
+    --flow-spacer: 2rem;
+    padding: 3em 0;
+
+    // TODO: Overriding .split default breakpoint as menu doesn't fit horizontally
+    .menu {
+      flex-direction: column;
+    }
+
+    @media (min-width: #{$tablet-width}) {
+      --flow-spacer: 0; // TODO: no margin-top needed for siblings as it's horizontal at this breakpoint
+      display: grid;
+      grid-template-columns: auto auto 1fr;
+      align-items: center;
+
+      .menu {
+        --flow-spacer: 0; // TODO: no margin-top needed for siblings as it's horizontal at this breakpoint
+        --split-gap: 2rem;
+        margin: 0; // reseting browser styles for margin-top of ul
+        flex-direction: row; // TODO: move to row at this breakpoint instead of the one provided by .split
+      }
+    }
+  }
+
+  // TODO: need to rely on order to override grid-template-columns
+  .primary-footer-inner,
+  .info { // TODO: overrides flex for .info
+    @media (min-width: #{$desktop-width}) {
+      display: grid;
+      grid-column: span 3;
+      grid-template-columns: subgrid;
+    }
+  }
+
+  .social {
+    display: flex;
+    gap: 1rem;
+
+    @media (min-width: #{$tablet-width}) {
+      justify-content: end;
+    }
+
+    img {
+      height: 2rem;
+    }
+  }
+
+  .info {
+    padding: 1em 0;
+    background-color: var(--clr-neutral-200);
+    // More info on this workaround: https://discord.com/channels/436251713830125568/1211349061786144863/1211349061786144863
+    box-shadow: 50vw 0 0 0 var(--clr-neutral-200),
+      -50vw 0 0 0 var(--clr-neutral-200);
+
+    .link {
+      font-weight: 500;
+    }
+
+    @media (min-width: #{$tablet-width}) {
+      --split-gap: 0; // TODO: vertical gap is needed only on mobile
+    }
+  }
+}

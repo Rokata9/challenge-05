@@ -1,0 +1,51 @@
+:root {
+  --ff-base: "Poppins", sans-serif;
+
+  /* small screen font-sizes */
+  --fs-200: 0.75rem;
+  --fs-300: 0.813rem;
+  --fs-400: 1rem;
+  --fs-500: 1.25rem;
+  --fs-700: 2.125rem;
+  --fs-900: 3.375rem;
+
+  --fw-200: 200;
+  --fw-300: 300;
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-700: 700;
+
+  --clr-neutral-100: #fff;
+  --clr-neutral-200: #f5f7fa;
+  --clr-neutral-400: #737b8c;
+  --clr-neutral-500: #434956;
+  --clr-neutral-900: #020203;
+
+  --clr-primary-300: #0469dc;
+  --clr-primary-400: #5858da;
+
+  --br: 2.5rem;
+  --search-icon-size: 1.5em;
+}
+
+$button-block-padding: 0.5em;
+$box-shadow: 0 1.5em 50px 10px #888888;
+$container-spacing-sm: 1em;
+$container-spacing-lg: 5em;
+$tablet-width-sm: 48em;
+$tablet-width: 64em;
+$desktop-width: 80em;
+$clamp-spacing: clamp(1rem, -11rem + 25vw, 5rem);
+
+@media (min-width: $tablet-width) {
+  :root {
+    --fs-900: 4.25rem;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  :root {
+    --fs-900: 6rem;
+  }
+}
+

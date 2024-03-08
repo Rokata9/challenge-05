@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>challenge 05 - main</title>
+    <script defer src="script.js"></script>
+  </head>
+  <body class="main-page">
+    <header class="primary-header">
+      <div class="container">
+        <nav class="primary-nav">
+          <a href="index.html" aria-label="KnittingPro home page">
+            <picture class="logo">
+              <!-- TODO: unfortunately min-width has to be hardcoded, no custom props acceptable -->
+              <source
+                media="(min-width: 48em)"
+                srcset="assets/logo-large.svg"
+              />
+              <img src="assets/logo-small.svg" alt="logo" />
+            </picture>
+          </a>
+          <div class="input-wrapper">
+            <input
+              type="text"
+              class="search-input"
+              placeholder="What do you want to learn?"
+            />
+            <i class="search-icon" alt="search icon"></i>
+          </div>
+          <div class="actions">
+            <a href="#" class="btn btn-outline sign-in-btn">Sign In</a>
+            <a href="#" class="btn btn-primary">Get Started</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- should have outer element which is grid (.secondary-nav-section)
+         inner element which takes grid columns (.secondary-nav-section-wrapper)
+         and then the flex nav items, otherwise underline decoration coming from .separator doesn't extend with scroll 
+    -->
+    <section class="secondary-nav-section grid-template-columns-responsive">
+      <div class="secondary-nav-section-wrapper separator">
+        <nav class="secondary-nav">
+          <div class="secondary-nav__wrapper">
+            <ul class="secondary-nav__list">
+              <li><a href="#">All Courses</a></li>
+              <li><a href="#">Beginner</a></li>
+              <li><a href="#">Intermediate</a></li>
+              <li><a href="#">Expert</a></li>
+              <li><a href="#">Grandmother</a></li>
+            </ul>
+            <a href="#" class="subscribe-btn">Subscribe</a>
+          </div>
+        </nav>
+      </div>
+    </section>
+
+    <div class="container">
+      <section class="courses">
+        <div class="course">
+          <label class="btn level level-beginner">Beginner</label>
+          <div class="rating">
+            <span class="rating-value">4.4</span>
+            <picture class="rating-stars">
+              <source media="(min-width: 48em)" srcset="assets/stars.svg" />
+              <img src="assets/full-star.svg" alt="4.4 rating" />
+            </picture>
+          </div>
+          <h2 class="title">Course Name</h2>
+          <div class="author-name">Author's Name</div>
+          <div class="pricing">
+            <div class="price">$15.99</div>
+            <button type="button" class="btn enroll-btn">Enroll</button>
+          </div>
+        </div>
+
+        <div class="course">
+          <label class="btn level level-beginner">Beginner</label>
+          <div class="rating">
+            <span class="rating-value">4.8</span>
+            <picture class="rating-stars">
+              <source media="(min-width: 48em)" srcset="assets/stars.svg" />
+              <img src="assets/full-star.svg" alt="4.8 rating" />
+            </picture>
+          </div>
+          <h2 class="title">Course Name can be long</h2>
+          <div class="author-name">Author's Name</div>
+          <div class="description">
+            Lorem ipsum dolor sit amet, consectet adipiscing elit, sed do
+            eiusmod tempor incididunt ut.
+          </div>
+          <div class="pricing">
+            <div>
+              <div class="sale"><span class="old-price">$29.99</span> sale</div>
+              <div class="price">$15.99</div>
+            </div>
+            <button type="button" class="btn enroll-btn">Enroll</button>
+          </div>
+        </div>
+
+        <div class="course">
+          <label class="btn level level-intermediate">Intermediate</label>
+          <div class="rating">
+            <span class="rating-value">4.5</span>
+            <picture class="rating-stars">
+              <source media="(min-width: 48em)" srcset="assets/stars.svg" />
+              <img src="assets/full-star.svg" alt="4.5 rating" />
+            </picture>
+          </div>
+          <h2 class="title">
+            Course Name can be long and some times even longer
+          </h2>
+          <div class="author-name">Author's Name</div>
+          <div class="pricing">
+            <div class="price">$23.99</div>
+            <button type="button" class="btn enroll-btn">Enroll</button>
+          </div>
+        </div>
+
+        <div class="course rating-below-author">
+          <label class="btn level level-beginner">Beginner</label>
+          <div class="rating">
+            <span class="rating-value">4.4</span>
+            <picture class="rating-stars">
+              <source media="(min-width: 48em)" srcset="assets/stars.svg" />
+              <img src="assets/full-star.svg" alt="4.4 rating" />
+            </picture>
+          </div>
+          <h2 class="title">
+            Course Name can be long and some times even longer
+          </h2>
+          <div class="author-name">Author's Name</div>
+          <div class="pricing">
+            <div class="price">$15.99</div>
+            <button type="button" class="btn enroll-btn">Enroll</button>
+          </div>
+        </div>
+
+        <div class="course">
+          <label class="btn level level-beginner">Beginner</label>
+          <div class="rating">
+            <span class="rating-value">4.8</span>
+            <picture class="rating-stars">
+              <source media="(min-width: 48em)" srcset="assets/stars.svg" />
+              <img src="assets/full-star.svg" alt="4.8 rating" />
+            </picture>
+          </div>
+          <h2 class="title">Course Name</h2>
+          <div class="author-name">Author's Name</div>
+          <div class="description">
+            Lorem ipsum dolor sit amet, consectet adipiscing elit, sed do
+            eiusmod tempor incididunt ut.
+          </div>
+          <div class="pricing">
+            <div>
+              <div class="sale link">
+                <span class="old-price">$29.99</span> sale
+              </div>
+              <div class="price">$23.99</div>
+            </div>
+            <button type="button" class="btn enroll-btn">Enroll</button>
+          </div>
+        </div>
+
+        <div class="course">
+          <label class="btn level level-intermediate">Intermediate</label>
+          <div class="rating">
+            <span class="rating-value">4.5</span>
+            <picture class="rating-stars">
+              <source media="(min-width: 48em)" srcset="assets/stars.svg" />
+              <img src="assets/full-star.svg" alt="4.5 rating" />
+            </picture>
+          </div>
+          <h2 class="title">
+            Course Name can be long and some times even longer
+          </h2>
+          <div class="author-name">Author's Name</div>
+          <div class="pricing">
+            <div class="price">$23.99</div>
+            <button type="button" class="btn enroll-btn">Enroll</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="cta">
+      <div class="container">
+        <div class="split">
+          <!-- div prevents the img from expanding too much (going out of flex item) - happens because the image is big -->
+          <div>
+            <img class="shadow" src="assets/yarn.png" alt="knit" />
+          </div>
+          <div class="community-desc flow-content">
+            <h3>Welcome to the largest knitting community.</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectet adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna consectet
+              adipiscing.
+            </p>
+            <div class="split actions">
+              <a href="#" class="btn btn-primary">Get Started</a
+              ><a href="#" class="btn btn-outline">Learn more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="instructor">
+      <div class="container">
+        <div class="split">
+          <img class="shadow" src="assets/profile-pic.png" alt="instructor" />
+          <div class="community-desc flow-content">
+            <h2>Become an instructor</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectet adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna.
+            </p>
+            <a href="#" class="btn btn-primary">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- Placing it on .container would cause it not to respect container's padding, because of container's max-width: 80rem 
+           Used a separate element as the block padding is on the section and separator would show before it if placed on section,
+           but at the same time we want it inside a container to have the inline spacing.  
+      -->
+      <div class="separator"></div>
+    </div>
+
+    <footer class="primary-footer grid-template-columns-responsive">
+      <div class="primary-footer-wrapper">
+        <div class="primary-footer-inner flow-content">
+          <img src="assets/logo-large.svg" alt="logo" class="logo" />
+          <ul class="menu split">
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Legal Note</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Accessibility</a></li>
+          </ul>
+          <div class="social">
+            <a href="#"><img src="assets/Youtube.svg" alt="youtube" /></a>
+            <a href="#"><img src="assets/Instagram.svg" alt="instagram" /></a>
+            <a href="#"><img src="assets/facebook.svg" alt="facebook" /></a>
+          </div>
+        </div>
+        <div class="info split">
+          <p>Responsible: <a href="#" class="link">Kevin Powell</a></p>
+          <p>Last modified: November 2020</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

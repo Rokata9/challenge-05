@@ -1,0 +1,276 @@
+@use "variables" as *;
+
+// can't use gap property for .course as spacing between elements varies
+$course-card-spacing: 1rem;
+$section-split-gap-sm: 5rem;
+$section-split-gap-lg: 10rem;
+
+/* ----------------------------- */
+/* Pages layout                  */
+/* ----------------------------- */
+body {
+  &.hero-page {
+    grid-template-areas:
+      ". header ."
+      ". hero ."
+      ". footer .";
+    // make sure footer is fixed to bottom if no page scroll and in the end of the content if there's page scroll
+    grid-template-rows: auto 1fr auto;
+
+    .primary-header {
+      grid-area: header;
+    }
+
+    footer {
+      grid-area: footer;
+      grid-column: 2 / -1;
+
+      @media (min-width: #{$tablet-width-sm}) {
+        grid-column: 2 / 3;
+      }
+    }
+  }
+
+  /* footer and secondary nav span columns 2 and 3 for mobile according to the Figma design 
+     and can overflow (although it doesn't on let's say 700px) to the right;
+     also there's a small space to the left on mobile (column 1) */
+  &.main-page {
+    .secondary-nav-section {
+      .secondary-nav-section-wrapper {
+        grid-column: 2 / -1;
+
+        @media (min-width: #{$tablet-width-sm}) {
+          grid-column: 2 / 3;
+        }
+      }
+    }
+  }
+}
+
+/* ----------------------------- */
+/* Hero page                     */
+/* ----------------------------- */
+
+.hero-image {
+  aspect-ratio: 1;
+  object-fit: cover;
+
+  @media (min-width: #{$tablet-width}) {
+    aspect-ratio: 2 / 1;
+  }
+}
+
+/* ----------------------------- */
+/* Main page - Courses           */
+/* ----------------------------- */
+.courses {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 1fr;
+  /* This is the foundation for subgrid (doesn't support repeat(4, auto)); The 1fr part would be equal in height for multiple rows, but not for auto items.
+   * Child items should span all these rows. */
+  // grid-auto-rows: 1fr auto auto auto auto;
+  gap: 1rem;
+  padding-block: 1rem;
+
+  // alternatively instead of media queries something like repeat(auto-fit, minmax(1fr, 15rem)) for columns can be used
+  @media (min-width: #{$tablet-width-sm}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: #{$desktop-width}) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .course {
+    display: grid;
+    grid-template-areas:
+      "level rating"
+      "name name"
+      "author author"
+      "description description"
+      "pricing pricing";
+    grid-template-rows: 1fr repeat(4, auto);
+    // grid-template-rows: subgrid;
+    // grid-row: span 5; // again needed if we use subgrid (this takes all the repeating auto-rows pattern set up in the parent grid)
+    grid-template-columns: repeat(2, 1fr);
+    background-color: var(--clr-neutral-200);
+    border-radius: var(--br);
+    padding: 1.5rem;
+    min-height: 25rem;
+
+    /* there's a single card in the desktop design where rating is not in the top right corner of the card,
+     * that's why level and rating are not placed in a common element */
+    &.rating-below-author {
+      @media (min-width: #{$desktop-width}) {
+        grid-template-areas:
+          "level level"
+          "name name"
+          "author author"
+          "rating rating"
+          "description description"
+          "pricing pricing";
+
+        .rating {
+          justify-self: start; // otherwise end for all cards, moving in to the right
+        }
+      }
+    }
+
+    .level,
+    .rating {
+      align-self: self-start;
+    }
+
+    .level {
+      grid-area: level;
+      justify-self: start;
+      color: var(--clr-neutral-100);
+      font-weight: var(--fw-400);
+
+      &.level-beginner {
+        background-color: var(--clr-primary-400);
+      }
+
+      &.level-intermediate {
+        background-color: var(--clr-primary-300);
+      }
+    }
+
+    .rating {
+      grid-area: rating;
+      justify-self: end;
+      display: flex;
+      gap: 0.25rem;
+      align-items: center;
+      // needed to align with level (using its padding value) as we're already using align-self: self-start; on both
+      padding-block: $button-block-padding;
+    }
+
+    .title {
+      grid-area: name;
+      margin-top: $course-card-spacing;
+    }
+
+    .author-name,
+    .description {
+      color: var(--clr-neutral-500);
+    }
+
+    .author-name {
+      grid-area: author;
+      font-size: var(--fs-200);
+      margin-block: $course-card-spacing;
+    }
+
+    .description {
+      grid-area: description;
+
+      @media (width < #{$tablet-width}) {
+        display: none;
+      }
+    }
+
+    .pricing {
+      grid-area: pricing;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1.5rem;
+
+      .sale {
+        color: var(--clr-neutral-400);
+        text-transform: uppercase;
+        font-size: var(--fs-200);
+
+        .old-price {
+          display: inline-block;
+          text-decoration: line-through;
+        }
+      }
+
+      .enroll-btn {
+        color: var(--clr-neutral-100);
+        background-color: var(--clr-neutral-500);
+      }
+    }
+  }
+}
+
+/* ----------------------------- */
+/* Main page - CTA section       */
+/* ----------------------------- */
+.cta {
+  background-color: var(--clr-neutral-200);
+
+  .community-desc h3 {
+    font-weight: 400;
+    font-size: var(--fs-700);
+  }
+
+  @media (min-width: #{$tablet-width-sm}) {
+    .split > div:has(img) {
+      order: 2;
+    }
+  }
+
+  img {
+    object-fit: cover;
+    aspect-ratio: 1;
+
+    @media (min-width: #{$tablet-width}) {
+      max-width: 20rem;
+    }
+  }
+
+  > .container > .split {
+    @media (min-width: #{$tablet-width-sm}) {
+      align-items: center;
+      --split-gap: #{$section-split-gap-sm};
+    }
+
+    @media (min-width: #{$desktop-width}) {
+      --split-gap: #{$section-split-gap-lg};
+    }
+  }
+
+  .actions {
+    --split-gap: 1rem;
+    align-items: flex-start; // avoid stretching of buttons on mobile version
+
+    .btn-outline {
+      padding-left: 0;
+    }
+  }
+}
+
+/* ----------------------------- */
+/* Main page - Instructor        */
+/* ----------------------------- */
+.instructor {
+  h2 {
+    font-weight: 400;
+    font-size: var(--fs-900);
+  }
+
+  img {
+    width: 100%; // so image grows beyond intrinsic size which is too small
+    object-fit: cover;
+
+    @media (min-width: #{$tablet-width}) {
+      aspect-ratio: 0.85;
+      max-width: 20rem;
+    }
+  }
+
+  > .container > .split {
+    @media (min-width: #{$tablet-width-sm}) {
+      align-items: center;
+      --split-gap: #{$section-split-gap-sm};
+    }
+
+    @media (min-width: #{$desktop-width}) {
+      --split-gap: #{$section-split-gap-lg};
+    }
+  }
+}

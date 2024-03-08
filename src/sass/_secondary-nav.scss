@@ -1,0 +1,76 @@
+@use "variables" as *;
+
+.secondary-nav-section {
+  background: linear-gradient(var(--clr-neutral-200), var(--clr-neutral-100));
+}
+
+.secondary-nav {
+  /* From Discord thread https://discord.com/channels/436251713830125568/1205251119148703816/1208115806232256512:
+    * ... so, what's happening is an element has a width: auto, which in very simple terms means "I'm the width of my parent".
+    * The .secondary-nav__list has a flex on it, and when the screen is small, it causes overflow. 
+    * The wrapper we added won't grow in size, it stays the same as it was,  and the flex things just overflow out the side.
+    * When we use display: flex on the .secondary-nav, it changes that auto behavior. 
+    * Flex, as a default, will have an element be as wide as the content inside of it, so now, 
+    * instead of overflowing, it's growing to match the content that's in there.
+
+    * Note: If .separator is placed on the grid child (footer in index.html), then this flex won't be needed. 
+    * Otherwise it's needed for the reasons mentioned above. */
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow-x: auto;
+
+  .secondary-nav__wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-basis: 100%;
+    /* would also work instead of flex on the element, but we need space-between for bigger screen sizes */
+    // width: max-content;
+
+    .secondary-nav__list {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 0;
+
+      li {
+        padding: 1em 0;
+        color: var(--clr-neutral-500);
+
+        &:hover,
+        &:focus {
+          color: var(--clr-neutral-900);
+        }
+      }
+    }
+
+    .subscribe-btn {
+      padding: 1em;
+      color: teal;
+
+      @media (min-width: $tablet-width) {
+        color: inherit;
+        padding-inline: 0;
+      }
+    }
+
+    .secondary-nav__list li,
+    .subscribe-btn {
+      white-space: nowrap;
+      position: relative;
+
+      &:hover::after,
+      &:focus::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        height: 5px;
+        border-radius: 100vw;
+        left: 0;
+        right: 0;
+        background-color: currentColor;
+        z-index: 1;
+      }
+    }
+  }
+}

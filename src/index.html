@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>challenge 05 - hero</title>
+    <script defer src="script.js"></script>
+  </head>
+  <body class="hero-page grid-template-columns-responsive">
+    <header class="primary-header">
+      <nav class="primary-nav">
+        <a href="index.html" aria-label="KnittingPro home page">
+          <picture class="logo">
+            <source
+              media="(min-width: 48em)"
+              srcset="assets/logo-large.svg"
+            />
+            <img src="assets/logo-small.svg" alt="logo" />
+          </picture>
+        </a>
+        <div class="input-wrapper">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="What do you want to learn?"
+          />
+          <i class="search-icon" alt="search icon"></i>
+        </div>
+        <div class="actions">
+          <a href="#" class="btn btn-outline sign-in-btn">Sign In</a>
+          <a href="#" class="btn btn-primary">Get Started</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <img class="hero-image shadow" src="assets/yarn.png" alt="knit" />
+      <h1 class="page-title">Become a knitting pro</h1>
+    </section>
+
+    <footer>
+      <nav class="secondary-nav">
+        <div class="secondary-nav__wrapper separator">
+          <ul class="secondary-nav__list">
+            <li><a href="#">All Courses</a></li>
+            <li><a href="#">Beginner</a></li>
+            <li><a href="#">Intermediate</a></li>
+            <li><a href="#">Expert</a></li>
+            <li><a href="#">Grandmother</a></li>
+          </ul>
+          <a href="#" class="subscribe-btn">Subscribe</a>
+        </div>
+      </nav>
+    </footer>
+  </body>
+</html>
