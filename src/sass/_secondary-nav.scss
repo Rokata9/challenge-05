@@ -1,5 +1,7 @@
 @use "variables" as *;
 
+$secondary-nav-spacing: 1em;
+
 .secondary-nav-section {
   background: linear-gradient(var(--clr-neutral-200), var(--clr-neutral-100));
 }
@@ -17,7 +19,6 @@
     * Otherwise it's needed for the reasons mentioned above. */
   display: flex;
   align-items: center;
-  position: relative;
   overflow-x: auto;
 
   .secondary-nav__wrapper {
@@ -30,7 +31,7 @@
     .secondary-nav__list {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: $secondary-nav-spacing;
       margin: 0;
 
       li {
@@ -45,7 +46,7 @@
     }
 
     .subscribe-btn {
-      padding: 1em;
+      padding: $secondary-nav-spacing;
       color: teal;
 
       @media (min-width: $tablet-width) {

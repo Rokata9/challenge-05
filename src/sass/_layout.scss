@@ -21,6 +21,27 @@ body {
       grid-area: header;
     }
 
+    .hero {
+      grid-area: hero;
+    
+      .hero-image {
+        /* from quesstion 5 in https://discord.com/channels/436251713830125568/1205251119148703816/1205251119148703816: 
+           if I remember right, it's because the image has a "defined" size when the parent is smaller (the max-width: 100% 
+           is effectively giving it a size). Once the parent is larger, now it's based on it's intrinsic size and the browser craps out, 
+           because it needs either a width or height for aspect-ratio to work. One solution is to define the width and height 
+           of the image as attributes. Our CSS will overwrite those anyway, but it gives the browser something to work with. 
+           Alternatively is to have a width: 100% or something like that on the image, but that can make it get too big and lose quality
+        */
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+      
+        @media (min-width: #{$tablet-width}) {
+          aspect-ratio: 2 / 1;
+        }
+      }
+    }
+
     footer {
       grid-area: footer;
       grid-column: 2 / -1;
@@ -48,26 +69,14 @@ body {
 }
 
 /* ----------------------------- */
-/* Hero page                     */
-/* ----------------------------- */
-
-.hero-image {
-  aspect-ratio: 1;
-  object-fit: cover;
-
-  @media (min-width: #{$tablet-width}) {
-    aspect-ratio: 2 / 1;
-  }
-}
-
-/* ----------------------------- */
 /* Main page - Courses           */
 /* ----------------------------- */
 .courses {
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: 1fr;
-  /* This is the foundation for subgrid (doesn't support repeat(4, auto)); The 1fr part would be equal in height for multiple rows, but not for auto items.
+  /* This is the foundation for potential subgrid (doesn't support 1fr repeat(4, auto)); 
+   * The 1fr part would be equal in height for multiple rows, but not for auto items.
    * Child items should span all these rows. */
   // grid-auto-rows: 1fr auto auto auto auto;
   gap: 1rem;
@@ -119,12 +128,12 @@ body {
 
     .level,
     .rating {
-      align-self: self-start;
+      align-self: self-start; // because they're part of the row which is 1fr and extends in height
     }
 
     .level {
       grid-area: level;
-      justify-self: start;
+      justify-self: start; // otherwise button will stretch to fill space
       color: var(--clr-neutral-100);
       font-weight: var(--fw-400);
 
@@ -238,7 +247,7 @@ body {
     --split-gap: 1rem;
     align-items: flex-start; // avoid stretching of buttons on mobile version
 
-    .btn-outline {
+    :not(:first-child) {
       padding-left: 0;
     }
   }

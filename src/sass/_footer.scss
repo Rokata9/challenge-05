@@ -47,6 +47,8 @@
     @media (min-width: #{$desktop-width}) {
       display: grid;
       grid-column: span 3;
+      /* On desktop menu and Last modified label need to be aligned below each other, but we don't want to hardcode any widths or spacings before them
+         More info: https://discord.com/channels/436251713830125568/1211349061786144863/1211349061786144863 */  
       grid-template-columns: subgrid;
     }
   }

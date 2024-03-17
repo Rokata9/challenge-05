@@ -1,7 +1,6 @@
 :root {
   --ff-base: "Poppins", sans-serif;
 
-  /* small screen font-sizes */
   --fs-200: 0.75rem;
   --fs-300: 0.813rem;
   --fs-400: 1rem;
@@ -26,16 +25,15 @@
 
   --br: 2.5rem;
   --search-icon-size: 1.5em;
+  --clamp-spacing: clamp(1rem, -11rem + 25vw, 5rem);
 }
 
 $button-block-padding: 0.5em;
-$box-shadow: 0 1.5em 50px 10px #888888;
 $container-spacing-sm: 1em;
 $container-spacing-lg: 5em;
 $tablet-width-sm: 48em;
 $tablet-width: 64em;
 $desktop-width: 80em;
-$clamp-spacing: clamp(1rem, -11rem + 25vw, 5rem);
 
 @media (min-width: $tablet-width) {
   :root {
@@ -48,4 +46,3 @@ $clamp-spacing: clamp(1rem, -11rem + 25vw, 5rem);
     --fs-900: 6rem;
   }
 }
-
