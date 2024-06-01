@@ -41,14 +41,21 @@
       </div>
     </header>
 
-    <!-- should have outer element which is grid (.secondary-nav-section)
-         inner element which takes grid columns (.secondary-nav-section-wrapper)
-         and then the flex nav items, otherwise underline decoration coming from .separator doesn't extend with scroll 
+    <!-- 
+         - initially separator class was placed on .secondary-nav-section-wrapper and it seems it worked as content is scrolled,
+         but that created a pseudo-element which always had rounded corners to left and right even as you scroll, because it was 
+         always as wide as .secondary-nav-section-wrapper (which didn't include the entire scrollable content, but only visible area);
+         - placing it on .secondary-nav__wrapper fixed that issue as that is the element which is as wide as the content,
+         check also notes in _secondary-nav.scss;
+         - the issue is valid for the menu in index.html, too (that is, if you place in on <footer> it'll behave exactly as 
+          .secondary-nav-section-wrapper here). Overall, the issue is caused by separator placed on non-overflowing
+          element (so up from .secondary-nav)
     -->
     <section class="secondary-nav-section grid-template-columns-responsive">
-      <div class="secondary-nav-section-wrapper separator">
-        <nav class="secondary-nav">
-          <div class="secondary-nav__wrapper">
+      <div class="secondary-nav-section-wrapper">
+        <!-- .secondary-nav styles could be placed on .secondary-nav-section-wrapper (add class .secondary-nav to it and remove <nav>) -->
+        <nav class="secondary-nav"> 
+          <div class="secondary-nav__wrapper separator">
             <ul class="secondary-nav__list">
               <li><a href="#">All Courses</a></li>
               <li><a href="#">Beginner</a></li>
