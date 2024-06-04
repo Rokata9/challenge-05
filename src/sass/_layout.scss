@@ -25,7 +25,7 @@ body {
       grid-area: hero;
     
       .hero-image {
-        /* from quesstion 5 in https://discord.com/channels/436251713830125568/1205251119148703816/1205251119148703816: 
+        /* from question 5 in https://discord.com/channels/436251713830125568/1205251119148703816/1205251119148703816: 
            if I remember right, it's because the image has a "defined" size when the parent is smaller (the max-width: 100% 
            is effectively giving it a size). Once the parent is larger, now it's based on it's intrinsic size and the browser craps out, 
            because it needs either a width or height for aspect-ratio to work. One solution is to define the width and height 
@@ -77,6 +77,7 @@ body {
   grid-auto-rows: 1fr;
   /* This is the foundation for potential subgrid (doesn't support 1fr repeat(4, auto)); 
    * The 1fr part would be equal in height for multiple rows, but not for auto items.
+   * For single line items all rows would match as they're now connected between them.
    * Child items should span all these rows. */
   // grid-auto-rows: 1fr auto auto auto auto;
   gap: 1rem;
@@ -121,7 +122,7 @@ body {
           "pricing pricing";
 
         .rating {
-          justify-self: start; // otherwise end for all cards, moving in to the right
+          justify-self: start; // otherwise end for all cards, moving it to the right
         }
       }
     }
@@ -243,7 +244,7 @@ body {
     }
   }
 
-  .actions {
+  .cta-actions {
     --split-gap: 1rem;
     align-items: flex-start; // avoid stretching of buttons on mobile version
 

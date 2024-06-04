@@ -13,10 +13,7 @@ $secondary-nav-spacing: 1em;
     * The wrapper we added won't grow in size, it stays the same as it was,  and the flex things just overflow out the side.
     * When we use display: flex on the .secondary-nav, it changes that auto behavior. 
     * Flex, as a default, will have an element be as wide as the content inside of it, so now, 
-    * instead of overflowing, it's growing to match the content that's in there.
-
-    * Note: If .separator is placed on the grid child (footer in index.html), then this flex won't be needed. 
-    * Otherwise it's needed for the reasons mentioned above. */
+    * instead of overflowing, it's growing to match the content that's in there. */
   display: flex;
   align-items: center;
   overflow-x: auto;
@@ -65,10 +62,10 @@ $secondary-nav-spacing: 1em;
         content: "";
         position: absolute;
         bottom: 0;
-        height: 5px;
-        border-radius: 100vw;
         left: 0;
         right: 0;
+        height: 5px;
+        border-radius: 100vw;
         background-color: currentColor;
         z-index: 1;
       }

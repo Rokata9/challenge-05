@@ -7,7 +7,9 @@
    * Probably it'd work without minmax func for mobile and desktop (that is, fixed values 
    * $container-spacing-sm on mobile and 1fr on desktop for the side columns).
    * Check also question 1 from https://discord.com/channels/436251713830125568/1205251119148703816/1205251119148703816 for 
-   * the reason this was introduced (instead of using only containers) */
+   * the reason this was introduced (instead of using only containers)
+   * Codepen for concept - https://codepen.io/rokata/pen/mdoQLzP
+   */
   display: grid;
   grid-template-columns:
     minmax($container-spacing-sm, 1fr)
