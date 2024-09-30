@@ -21,6 +21,7 @@
     --flow-spacer: 2rem;
     padding: 3em 0;
 
+    // not using .split because the media query breakpoint is different here
     .menu {
       display: flex;
       flex-direction: column;

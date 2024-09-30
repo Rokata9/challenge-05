@@ -129,7 +129,7 @@ body {
 
     .level,
     .rating {
-      align-self: self-start; // because they're part of the row which is 1fr and extends in height
+      align-self: self-start; // because they're part of the row which is 1fr and extends in height, we don't want them to stretch
     }
 
     .level {
